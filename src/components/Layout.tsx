@@ -40,16 +40,6 @@ const Layout = () => {
       <main className="flex-1 container py-8">
         <Outlet />
       </main>
-
-      <footer className="border-t border-border bg-card">
-        <div className="container flex flex-col sm:flex-row items-center justify-between gap-2 py-4 text-sm text-muted-foreground">
-          <p>StudyFlow © 2026</p>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-foreground transition-colors">Help</a>
-            <a href="#" className="hover:text-foreground transition-colors">About</a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
