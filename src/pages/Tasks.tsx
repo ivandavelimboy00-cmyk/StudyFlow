@@ -25,48 +25,60 @@ const Tasks = () => {
   ];
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">Tasks</h1>
-        <p className="text-sm text-muted-foreground">Add, edit and complete your study tasks.</p>
-      </div>
+    // ✅ outer spacing
+    <div className="w-full px-4 sm:px-6 lg:px-8">
+      
+      {/* ✅ controlled width (not too wide, not too narrow) */}
+      <div className="max-w-5xl mx-auto space-y-6">
 
-      <TaskForm onAdd={addTask} />
-
-      <div className="flex flex-wrap gap-2">
-        {filters.map((f) => (
-          <Button
-            key={f.key}
-            size="sm"
-            variant={filter === f.key ? "default" : "outline"}
-            onClick={() => setFilter(f.key)}
-            className={cn("rounded-full")}
-          >
-            {f.label}
-            <span className="ml-2 rounded-full bg-background/20 px-2 text-xs">{f.count}</span>
-          </Button>
-        ))}
-      </div>
-
-      {visible.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-border bg-card p-12 text-center">
-          <ListTodo className="mx-auto h-10 w-10 text-muted-foreground" />
-          <p className="mt-3 font-medium text-foreground">No tasks here</p>
-          <p className="text-sm text-muted-foreground">Add your first task above to get started.</p>
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight">Tasks</h1>
+          <p className="text-sm text-muted-foreground">
+            Add, edit and complete your study tasks.
+          </p>
         </div>
-      ) : (
-        <div className="space-y-2">
-          {visible.map((t) => (
-            <TaskItem
-              key={t.id}
-              task={t}
-              onToggle={toggleTask}
-              onDelete={deleteTask}
-              onUpdate={updateTask}
-            />
+
+        <TaskForm onAdd={addTask} />
+
+        <div className="flex flex-wrap gap-2">
+          {filters.map((f) => (
+            <Button
+              key={f.key}
+              size="sm"
+              variant={filter === f.key ? "default" : "outline"}
+              onClick={() => setFilter(f.key)}
+              className={cn("rounded-full")}
+            >
+              {f.label}
+              <span className="ml-2 rounded-full bg-background/20 px-2 text-xs">
+                {f.count}
+              </span>
+            </Button>
           ))}
         </div>
-      )}
+
+        {visible.length === 0 ? (
+          <div className="rounded-xl border border-dashed border-border bg-card p-12 text-center">
+            <ListTodo className="mx-auto h-10 w-10 text-muted-foreground" />
+            <p className="mt-3 font-medium text-foreground">No tasks here</p>
+            <p className="text-sm text-muted-foreground">
+              Add your first task above to get started.
+            </p>
+          </div>
+        ) : (
+          <div className="space-y-2">
+            {visible.map((t) => (
+              <TaskItem
+                key={t.id}
+                task={t}
+                onToggle={toggleTask}
+                onDelete={deleteTask}
+                onUpdate={updateTask}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
